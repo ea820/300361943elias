@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salesman List</title>
+</head>
+<body>
+<h1>Salesman List</h1>
+<a th:href="@{/salesmen/add}">Add New Salesman</a>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Item</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="salesman : ${salesmen}">
+        <td th:text="${salesman.name}"></td>
+        <td th:text="${salesman.amount}"></td>
+        <td th:text="${#dates.format(salesman.dot, 'yyyy-MM-dd')}"></td>
+        <td th:text="${salesman.item}"></td>
+        <td>
+            <a th:href="@{/salesmen/edit/{id}(id=${salesman.id})}">Edit</a>
+            <a th:href="@{/salesmen/delete/{id}(id=${salesman.id})}" onclick="return confirm('Are you sure you want to delete this salesman?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

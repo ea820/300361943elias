@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salesman Form</title>
+</head>
+<body>
+<h1 th:text="${salesman.id == null ? 'Add New Salesman' : 'Edit Salesman'}"></h1>
+<form action="#" th:action="@{/salesmen/save}" th:object="${salesman}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required><br><br>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" th:field="*{amount}" step="0.01" required><br><br>
+
+    <label for="dot">Date:</label>
+    <input type="date" id="dot" th:field="*{dot}" required><br><br>
+
+    <label for="item">Item:</label>
+    <input type="text" id="item" th:field="*{item}" required><br><br>
+
+    <input type="submit" th:value="${salesman.id == null ? 'Add Salesman' : 'Update Salesman'}">
+</form>
+<a th:href="@{/salesmen}">Back to List</a>
+</body>
+</html>
